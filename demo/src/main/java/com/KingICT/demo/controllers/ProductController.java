@@ -25,4 +25,9 @@ public class ProductController {
     public List<Product> getAllProducts(){
         return productService.getAllProducts();
     }
+
+    @GetMapping("/{category}/{priceMax}/{priceMin}")
+    public List<Product> filterByCategoryAndPrice(@PathVariable String category, @PathVariable double priceMax, @PathVariable double priceMin){
+        return productService.filterByCategoryAndPrice(category, priceMax, priceMin);
+    }
 }

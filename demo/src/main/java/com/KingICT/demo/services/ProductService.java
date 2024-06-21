@@ -9,4 +9,6 @@ public interface ProductService {
     Product getProduct(Long id);
 
     List<Product> getAllProducts();
+
+    List<Product> filterByCategoryAndPrice(String category, double priceMax, double priceMin);
 }
