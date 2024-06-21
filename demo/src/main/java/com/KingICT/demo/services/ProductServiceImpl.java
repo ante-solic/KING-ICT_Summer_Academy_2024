@@ -43,8 +43,20 @@ public class ProductServiceImpl implements ProductService {
 
         List<Product> filteredProducts = products.stream().filter(
                 Product -> Product.getCategory().equals(category)
-                        && Product.getPrice() > priceMin && Product.getPrice() < priceMax).toList();
+                        && Product.getPrice() > priceMin
+                        && Product.getPrice() < priceMax).toList();
 
         return filteredProducts;
+    }
+
+    public List<Product> searchByParameter(String parameter){
+        String url =  "https://dummyjson.com/products";
+        ProductList response = restTemplate.getForObject(url, ProductList.class);
+
+        List<Product> products = response.getProducts();
+
+        List<Product> searchResult = products.stream().filter(Product -> Product.getTitle().contains(parameter)).toList();
+
+        return searchResult;
     }
 }

@@ -30,4 +30,9 @@ public class ProductController {
     public List<Product> filterByCategoryAndPrice(@PathVariable String category, @PathVariable double priceMax, @PathVariable double priceMin){
         return productService.filterByCategoryAndPrice(category, priceMax, priceMin);
     }
+
+    @GetMapping("/search/{parameter}")
+    public List<Product> searchByName(@PathVariable String parameter){
+        return productService.searchByParameter(parameter);
+    }
 }
